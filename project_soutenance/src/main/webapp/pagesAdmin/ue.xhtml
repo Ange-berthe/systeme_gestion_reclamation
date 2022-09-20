@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+
+<!-- 
+		Replace path to template, title, header and body
+		with actual data.
+	 -->
+	<ui:composition template="/templates/templateAdmin.xhtml">
+			
+			<ui:define name="body">
+			<h:form id="form">
+			<p:messages autoUpdate="true" closable="true" showDetail="false"></p:messages>
+			<p:panel header="Enregistrement des ue" >
+	<h:panelGrid  columns="4" cellspacing="20">
+	
+	     <h:outputLabel value="code_ue :"></h:outputLabel>
+	     <h:inputText value="#{ueControllers.ue.codeUe}" ></h:inputText>
+	     
+	     <h:outputLabel value="intitule_ue :"></h:outputLabel>
+	     <h:inputText value="#{ueControllers.ue.intituleUe}" ></h:inputText>
+	     
+	     <h:outputLabel value="credit_ue :"></h:outputLabel>
+	     <h:inputText value="#{ueControllers.ue.creditUe}" ></h:inputText>
+	     
+	     <h:outputLabel value=" semestre :" ></h:outputLabel>
+			<p:selectOneMenu value="#{ueControllers.idSemestre}"  >
+			 <f:selectItem itemLabel="Selectionnez" itemValue=""/>
+			 <f:selectItems value="#{ueControllers.listSemestre}" var="tata" itemLabel="#{tata.intituleSemestre} " itemValue="#{tata.idSemestre}"></f:selectItems>
+			</p:selectOneMenu>
+	       
+	     
+<!-- binding permet de faire un lien -->
+	   
+	  </h:panelGrid>
+	  <p:toolbar>
+	         <f:facet name="left">
+	             <p:commandButton  value="Enregistrer" actionListener="#{ueControllers.enregistrer}" update="form"></p:commandButton>
+	             <p:commandButton  value="Modifier"  update="form"></p:commandButton>
+	             <p:commandButton value="Annuler"  update="form"></p:commandButton> 
+	             <p:commandButton value="Supprimer"  update="form" ></p:commandButton>  
+	         </f:facet>
+	   </p:toolbar>
+	  </p:panel>
+	 
+	  <br/>
+	
+	  
+	  <p:dataTable var="variable" value="#{ueControllers.listUe}"   selectionMode="single" selection="#{ueControllers.selectedUe}" rowKey="#{variable.codeUe}">
+	  <f:facet name="header">LISTES DES UE</f:facet>
+	  <p:ajax event="rowSelect" listener="#{ueControllers.selectionnerLigne}" update="form" ></p:ajax>
+	     
+	     <p:column headerText="code ue" >
+	     <h:outputText value="#{variable.codeUe}" />
+	    </p:column>
+	     <p:column headerText="intitule ue" >
+	     <h:outputText value="#{variable.intituleUe}" />
+	     </p:column>
+	     <p:column headerText="credit ue" > 
+	     <h:outputText value="#{variable.creditUe}" />
+	     </p:column>
+	     <p:column headerText=" semestre" >
+	     <h:outputText value="#{variable.semestre.intituleSemestre}" />
+	     </p:column>
+	     
+	   </p:dataTable>
+	   
+	   <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+	   <p:commandButton value="Oui" type="button"
+	   styleClass="ui-confirmdialog-yes" icon="ui-icon-check" >
+	   </p:commandButton>
+	   <p:commandButton value="Non" type="button"
+	   styleClass="ui-confirmdialog-no" icon="ui-icon-close" >
+	   </p:commandButton>
+	   
+	   </p:confirmDialog>
+	  
+      </h:form>
+	</ui:define>	
+	
+	</ui:composition>
+
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:p="http://primefaces.org/ui"> 
+
+<h:head></h:head> 
+<body> 
+
+     
+	<!-- 
+		Replace path to template, title, header and body
+		with actual data.
+	 -->
+	<ui:composition template="/templates/templateEtudiant.xhtml">
+			<ui:define name="pageTitle">Title</ui:define>
+			<ui:define name="pageHeader">Header</ui:define>
+			<ui:define name="body">
+				<h:form id="form">
+				
+		<p:messages  showDetail="true" closable="true"></p:messages>			
+				
+	<p:panel header="Enregistrement de RECLAMATION">
+	
+	<br/>	 	
+	<table>
+		<tr>
+			
+			<td style="width:60%">
+			<p:dataTable   >
+				<f:facet name="header">Liste des Evaluation </f:facet>
+				
+				<p:column selectionMode="single">
+				</p:column>
+				
+				<p:column headerText="ECUE" >
+				</p:column>
+				
+				<p:column headerText="Code Evaluation" >
+				</p:column>
+				
+				<p:column headerText="Libellé Evaluation">
+				</p:column>
+				
+			</p:dataTable>
+			</td>
+			
+			<td>
+	
+	<fieldset>
+	<legend>Informations de la réclamation</legend>
+		
+	<h:panelGrid columns="2" cellspacing="10">
+	<p:outputLabel value="Motif"></p:outputLabel> 
+	<p:selectOneMenu value="#{reclamationController.codeMotifReclam}">
+	<f:selectItem itemLabel="Selectionner" itemValue=""></f:selectItem>	
+	<f:selectItems value="#{reclamationController.listMotifeReclamation}" var="dom" itemLabel="#{dom.libelleMotifReclam}" itemValue="#{dom.codeMotifReclam}"></f:selectItems>	
+	</p:selectOneMenu>
+	
+	</h:panelGrid>
+	
+<!--	<p:fileUpload value="#{reclamationController.file}" mode="simple" skinSimple="true"/> -->
+	</fieldset>
+	</td>
+	</tr>
+	</table>
+	<br></br>
+	<p:toolbar >
+			<f:facet name="left">
+				<p:commandButton value="Enregistrer"  update="form" ></p:commandButton>
+				<p:commandButton value="Annuler"  ></p:commandButton>
+				<p:commandButton value="Modifier"  ></p:commandButton>
+			</f:facet>
+		</p:toolbar>
+		<br></br>
+					</p:panel>	
+		
+		
+		<!-- Boite de confirmation -->
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+				<p:commandButton value="Oui" type="button"
+					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+				<p:commandButton value="Non" type="button"
+					styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			</p:confirmDialog>
+	</h:form>
+			</ui:define>
+	</ui:composition>
+
+     
+</body> 
+</html>

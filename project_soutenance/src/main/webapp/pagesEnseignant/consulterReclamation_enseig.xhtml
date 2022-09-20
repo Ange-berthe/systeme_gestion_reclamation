@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+	<!-- 
+		Replace path to template, title, header and body
+		with actual data.
+	 -->
+	<ui:composition template="/templates/templateEnseignant.xhtml">
+			<ui:define name="body">
+				<h:form id="form">
+		
+	
+	<p:dataTable  >
+ 
+ <f:facet name="header"> LISTES DES RECLAMATIONS </f:facet>
+     <p:ajax event="rowSelect" process="@this"  update="form" ></p:ajax>
+   		
+   		<p:column headerText="Numero de la reclamation" >
+        </p:column>
+        
+        <p:column headerText="Matricule etudiant" >
+        </p:column>
+        
+        <p:column headerText="Motif">
+   		</p:column>
+   		
+   		 <p:column headerText="Evaluation">
+   		</p:column>
+   		
+   		<p:column headerText="ECUE">
+   		</p:column>
+   		
+   		<p:column headerText="Date de reclamation">
+   		</p:column>
+   		
+   		<p:column headerText="Detail de reclamation">
+   		</p:column>
+  
+	</p:dataTable>
+						
+				</h:form>
+			</ui:define>
+	</ui:composition>
+
+</html>

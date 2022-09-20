@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head></h:head> 
+<body> 
+
+
+<!-- 
+		Replace path to template, title, header and body
+		with actual data.
+	 -->
+	<ui:composition template="/templates/templateAdmin.xhtml">
+			
+			<ui:define name="body">
+			<h:form id="form">
+			<p:messages autoUpdate="true" closable="true" showDetail="false"></p:messages>
+			<p:panel header="Enregistrement des evaluations" >
+	<h:panelGrid  columns="6" cellspacing="15">
+	
+	     <h:outputLabel value="libelle_evaluation:"></h:outputLabel>
+	     <h:inputText ></h:inputText>
+	     
+	     
+	     
+<!-- binding permet de faire un lien -->
+	   
+	  </h:panelGrid>
+	  <p:toolbar>
+	         <f:facet name="left">
+	             <p:commandButton  value="Enregistrement"  update="form"></p:commandButton>
+	             <p:commandButton  value="Modifier"  update="form"></p:commandButton>
+	             <p:commandButton value="Annuler"  update="form"></p:commandButton> 
+	             <p:commandButton value="Supprimer"  update="form" ></p:commandButton>  
+	         </f:facet>
+	   </p:toolbar>
+	  </p:panel>
+	 
+	  <br/>
+	
+	  
+	  <p:dataTable var="variable"    selectionMode="single" >
+	  <f:facet name="header">LISTES DES EVALUATIONS</f:facet>
+	  <p:ajax event="rowSelect"  update="form" ></p:ajax>
+	     
+	     <p:column headerText="réference evaluation" style="width:10px">
+	     <h:outputText  />
+	    </p:column>
+	     <p:column headerText="libelle evaluation" style="width:10px">
+	     <h:outputText  />
+	     </p:column>
+	     
+	   </p:dataTable>
+	   
+	   <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+	   <p:commandButton value="Oui" type="button"
+	   styleClass="ui-confirmdialog-yes" icon="ui-icon-check" >
+	   </p:commandButton>
+	   <p:commandButton value="Non" type="button"
+	   styleClass="ui-confirmdialog-no" icon="ui-icon-close" >
+	   </p:commandButton>
+	   
+	   </p:confirmDialog>
+	  
+      </h:form>
+	</ui:define>	
+	
+	</ui:composition>
+
+</body> 
+</html>

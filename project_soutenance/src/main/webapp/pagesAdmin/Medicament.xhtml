@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+      
+      
+      	<!-- 
+		Replace path to template, title, header and body
+		with actual data.
+	 -->
+	<ui:composition template="/templates/templateAdmin.xhtml">
+			
+			<ui:define name="body">
+    <h:form id="form">
+    <p:messages autoUpdate="true" closable="true" showDetail="false"></p:messages>
+    
+	 <p:panel header="Enregistrement des medicaments">
+	 <h:panelGrid columns="4" cellspacing="15">
+	     <h:outputLabel value="Nom_medicament :"></h:outputLabel>
+	     <h:inputText value="#{medicamentControllers.medicament.nomMedicament}"></h:inputText>
+	     </h:panelGrid>
+	       <p:toolbar>
+	           <f:facet name="left">		
+	             <p:commandButton value="Enregistrer" actionListener="#{medicamentControllers.enregistrer}" update="form" ><p:confirm header="confirmation" message="confirmez-vous l'enregistrement?"/></p:commandButton>
+	             <p:commandButton value="Annuler" actionListener="#{medicamentControllers.annuler}" update="form"><p:confirm header="confirmation" message="confirmez-vous annuler?"/></p:commandButton>
+		         <p:commandButton binding="#{medicamentControllers.modifierBtn}" value="Modifier" actionListener="#{medicamentControllers.modifier}" update="form"> <p:confirm header="confirmation" message="confirmez-vous la modification?"/></p:commandButton>
+		         <p:commandButton value="Supprimer" actionListener="#{medicamentControllers.supprimer}" update="form" ></p:commandButton>  
+		         
+		      </f:facet>
+		  </p:toolbar>
+           
+	</p:panel>
+	<br />
+	  <p:dataTable var="var" value="#{medicamentControllers.listTable}" selectionMode="single" selection="#{medicamentControllers.selectedObject}" rowKey="#{var.idMedicament}">
+	  <f:facet name="header">LISTES DES MEDICAMENTS</f:facet>
+	   <p:ajax event="rowSelect"  update="form" listener="#{medicamentControllers.selectionnerLigne}"></p:ajax>
+	    
+	     <p:column headerText="N°_MEDICAMENT" style="width:10px">
+	     <h:outputText value="#{var.idMedicament}" />
+	     </p:column>
+	     <p:column headerText="Nom_MEDICAMENT" style="width:10px">
+	     <h:outputText value="#{var.nomMedicament}" />
+	     </p:column>
+	   
+	   </p:dataTable>
+	   
+	    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+	   <p:commandButton value="Oui" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"></p:commandButton>
+	   <p:commandButton value="Non" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"></p:commandButton>
+	   </p:confirmDialog>
+                  
+    </h:form>
+  </ui:define>
+			
+	
+	</ui:composition>
+
+</html>
+      
+

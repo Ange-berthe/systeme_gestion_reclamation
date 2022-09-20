@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+ <link rel="stylesheet" type="text/css" href="../ressources/css/ngo.css"></link>
+<link rel="stylesheet" type="text/css" href="../ressources/css/monStyle.css"></link>
+<link rel="stylesheet" type="text/css" href="../resource/css/domi.css"></link>
+  <title><ui:insert name="title">logciel de reclamaton</ui:insert></title>
+</h:head>
+
+<h:body>
+<p:layout fullPage="true">
+<p:layoutUnit position="north">
+<div id="header">
+    <ui:insert name="header">
+    	<ui:include  src="/templates/header.xhtml"></ui:include>
+    </ui:insert>
+</div>
+</p:layoutUnit>
+
+<p:layoutUnit position="west" size="225" header="Menu" collapsible="true">
+
+	<h:form>
+		<p:panelMenu >
+			
+		
+		<p:submenu label="PARAMETRAGE">
+			
+			<p:menuitem value="ANNEE_SCOLAIRE" outcome="/pagesAdmin/anneeScolaire.xhtml"/>
+			<p:menuitem value="ENSEIGNANT" outcome="/pagesAdmin/enseignant.xhtml"/>
+			<p:menuitem value="ETUDIANT" outcome="/pagesAdmin/etudiant.xhtml"/>
+			<p:menuitem value="ECUE" outcome="/pagesAdmin/ecue.xhtml"/>
+			<p:menuitem value="ETAT_RECLAMATION" outcome="/pagesAdmin/etatReclamation.xhtml"/>
+			<p:menuitem value="EVALUATION" outcome="/pagesAdmin/evaluation.xhtml"/>
+			<p:menuitem value="FILIERE" outcome="/pagesAdmin/filiere.xhtml"/>
+			<p:menuitem value="GENRE" outcome="/pagesAdmin/genre.xhtml"/>
+			<p:menuitem value="NIVEAU" outcome="/pagesAdmin/niveau.xhtml"/>
+			<p:menuitem value="MOTIF_RECLAMATION" outcome="/pagesAdmin/motifReclamation.xhtml"/>
+			<p:menuitem value="PARCOURS" outcome="/pagesAdmin/parcours.xhtml"/>
+			<p:menuitem value="RETOUR_RECLAMATION" outcome="/pagesAdmin/retourReclamation.xhtml"/>
+			<p:menuitem value="SEMESTRE" outcome="/pagesAdmin/semestre.xhtml"/>
+			<p:menuitem value="TYPE_EVALUTION" outcome="/pagesAdmin/typeEvaluation.xhtml"/>
+			<p:menuitem value="UE" outcome="/pagesAdmin/ue.xhtml"/>
+		    
+			
+			
+		</p:submenu>
+			
+		<p:submenu label="RECLAMATION">
+		<p:menuitem value="CONSULTER_RECLAMATION" outcome="/pagesAdmin/consulterReclamation_etudiant.xhtml"/>
+		</p:submenu>
+		
+		</p:panelMenu>
+	</h:form>
+</p:layoutUnit>
+
+<p:layoutUnit position="center" >
+<div id="content" class="div_fond">
+  <ui:insert name="body" >
+    <h1>UN MESSAGE DE BIENVENU ICI SI VOUSLE VOULEZ</h1>   
+	
+  </ui:insert>
+</div>
+</p:layoutUnit>
+
+<p:layoutUnit position="south">
+<div id="footer">
+  <ui:insert name="footer">
+		<ui:include src="/templates/footer.xhtml"></ui:include>
+  </ui:insert>
+</div>
+</p:layoutUnit>
+</p:layout>
+</h:body>
+
+</html>

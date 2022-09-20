@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+	<!-- 
+		Replace path to template, title, header and body
+		with actual data.
+	 -->
+	<ui:composition template="/templates/template.xhtml">
+			
+			<ui:define name="body">
+				<form id="form">
+				<p:messages  showDetail="true" closable="true"></p:messages>			
+				
+	<p:panel header="Enregistrement des UE">
+	
+	<br/>	 	
+		
+	
+	<p:outputLabel for="inputlibue" value="UE"></p:outputLabel>
+	<p:inputText id="inputlibniveau" value="#{niveauController.niveau.libeleNiveau}" required="true" requiredMessage="Veuillez resseigner le niveau SVP"></p:inputText>	
+		
+			
+	<br/>
+	
+		<p:toolbar >
+			<f:facet name="left">
+				<p:commandButton value="Enregistrer" action="#{niveauController.enregistrer}" update="form" binding="#{niveauController.btnEnregistrer}" ></p:commandButton>
+				<p:commandButton value="Annuler"  action="#{niveauController.annuler}" update="form" binding="#{niveauController.btnAnnuler}"></p:commandButton>
+				<p:commandButton value="Modifier"  action="#{niveauController.modifier}" update="form" binding="#{niveauController.btnModifier}"></p:commandButton>
+			</f:facet>
+		</p:toolbar>
+	</p:panel>
+	<br></br>
+	
+	
+ <p:dataTable  var="opf" value="#{niveauController.listNiveau}"  selectionMode="single" selection="#{niveauController.selectNiveau}" rowKey="#{opf.codeNiveau}" scrollable="true" scrollHeight="250">
+ 
+ <f:facet name="header">
+            UE
+        </f:facet>
+     <p:ajax event="rowSelect" process="@this"  update="form" listener="#{niveauController.selectionnerLigne}"></p:ajax>
+   		<p:column headerText="Libéllé du niveau ">
+        <h:outputText value="#{opf.libeleNiveau}"/>
+   		</p:column>
+   		
+   		<p:column headerText="Code du niveau">
+        <h:outputText value="#{opf.codeNiveau}"/>
+        </p:column>
+	
+	
+	</p:dataTable>
+				</form>
+			</ui:define>
+	</ui:composition>
+
+</html>
